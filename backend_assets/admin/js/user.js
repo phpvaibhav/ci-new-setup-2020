@@ -145,11 +145,11 @@ $(document).on('submit', "#smart-form-updateuser", function (event) {
         contentType: false,
         cache: false,
             beforeSend: function () {
-               preLoadshow(true);
+              // preLoadshow(true);
             $('#submit').prop('disabled', true);
             },
           success: function (res) {
-             preLoadshow(false);
+            // preLoadshow(false);
                    setTimeout(function(){  $('#submit').prop('disabled', false); },4000);
                   if(res.status=='success'){
                    toastr.success(res.message, 'Success', {timeOut: 3000});
