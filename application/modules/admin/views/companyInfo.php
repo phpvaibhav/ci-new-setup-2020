@@ -1,48 +1,46 @@
-<?php
-/*	echo "<pre>";
-	print_r($companyinfo);
-	echo "</pre>";*/
-	
-?>
-<!-- widget grid -->
-<section id="widget-grid" class="">       
-	<!-- row -->
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
-			<div class="well no-padding">
-				<form method="post" action="companyinfo" id="smart-form-companyinfo" class="smart-form client-form" enctype="multipart/form-data" novalidate autocomplete="off">
-					<header>
-						Company info
-					</header>
 
-					<fieldset>
-						<section>
-							<input type="hidden" name="companyId" value="<?= encoding($companyinfo['companyId']);?>" >
-							<label class="label">Company Name</label>
-							<label class="input"> <i class="icon-append fa fa-th-list"></i>
-								<input type="text" name="companyName" placeholder="Company name" id="comapnyName" value="<?= $companyinfo['companyName'];?>" >
-								<b class="tooltip tooltip-bottom-right"> Please enter your comapny name</b> </label>
-						</section>
-						<section>
-							<label class="label">Company Email</label>
-							<label class="input"> <i class="icon-append fa fa-reply-all"></i>
-								<input type="text" name="companyEmail" placeholder="Company email" id="companyEmail" value="<?= $companyinfo['email'];?>" >
-								<b class="tooltip tooltip-bottom-right"> Please enter your comapny email</b> </label>
-						</section>
-						<section>
-							<label class="label">Logo</label>
-							<div class="input input-file">
+<div class="row">
+
+    <div class="col-lg-6 col-sm-6 col-md-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Company Info</h5>
+
+            </div>
+            <div class="ibox-content">
+                <form class="form-horizontal"method="post" action="companyinfo" id="smart-form-companyinfo" enctype="multipart/form-data" novalidate autocomplete="off">
+                	<input type="hidden" name="companyId" value="<?= encoding($companyinfo['companyId']);?>" >
+                  <!--   <p>Sign in today for more expirience.</p> -->
+                    <div class="form-group">
+
+                        <div class="col-lg-12">
+                        	<label class="control-label">Company Name</label>
+                        	<input type="text" name="companyName" placeholder="Company name" id="comapnyName" value="<?= $companyinfo['companyName'];?>" class="form-control" >
+                         <!-- <span class="help-block m-b-none">Example block-level help text here.</span> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-lg-12">
+                        	<label class="control-label">Company Email</label>
+                        	<input type="text"  name="companyEmail" placeholder="Company email" id="companyEmail" value="<?= $companyinfo['email'];?>" class="form-control" >
+                         <!-- <span class="help-block m-b-none">Example block-level help text here.</span> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-lg-12">
+                        	<label class="control-label">Logo</label>
+                        	<div class="input input-file">
 								<span class="button"><input type="file" name="logoImage" id="file" onchange="filePreviewImage(this);this.parentNode.nextSibling.value = this.value" accept="image/*">Browse</span><input type="text" readonly="">
 							</div>
-							<div class="note">
-							<strong>Note:</strong> Image dimension should be within 250X56.
-							</div>
-							
-						</section>
-						<section>
+                         <!-- <span class="help-block m-b-none">Example block-level help text here.</span> -->
+                        </div>
+                    </div>
+                     <div class="form-group">
 
-							
-									<?php 
+                        <div class="col-lg-12">
+                        	<?php 
 										$logo = base_url().'backend_assets/img/company_logo_default.png';
 										if(!empty($companyinfo['logo'])){
 											//if(file_exists(base_url().'company_assets/logo/'.$companyinfo['logo'])){
@@ -54,22 +52,20 @@
 									 <div id="privew">
 										<img src="<?= $logo; ?>" class="img img-responsive img-thunbnail">
 									</div>
-						
-						</section>
+                        </div>
+                    </div>
+                   
+                  
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"  id="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-						
-					</fieldset>
-					<footer>
-						<button type="submit" id="submit" class="btn btn-primary">
-							Update
-						</button>
-					</footer>
-				</form>
-			</div>	
-		</div>
-	</div>    
-  	<!-- end row -->
-</section>
-        <!-- end widget grid -->
 
 

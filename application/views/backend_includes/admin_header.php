@@ -25,7 +25,13 @@
 </head>
 
 <body class=""  data-base-url="<?php echo base_url(); ?>" data-auth-url="<?php echo $user['authToken']; ?>">
-
+<!-- loader -->
+<div class="dialog-background" id="pre-load-dailog" style="display: none;">
+    <div class="dialog-loading-wrapper">
+        <span class="dialog-loading-icon"><img src="<?= base_url();?>backend_assets/img/ajax-loader.gif" alt="Loading..."></span>
+    </div>
+</div> 
+<!-- loader -->
     <div id="wrapper">
 
     <nav class="navbar-default navbar-static-side" role="navigation">
@@ -67,12 +73,12 @@
                       </li>
                   <?php endif; } ?>
                   <?php if(isset($user['roleId']) && $user['roleId']==1): ?> 
-                      <li class="<?php echo (strtolower($this->router->fetch_class()) =='roles' ) ? 'active' : ''; ?>">
+                 <!--      <li class="<?php echo (strtolower($this->router->fetch_class()) =='roles' ) ? 'active' : ''; ?>">
                       <a href="<?php echo base_url('roles'); ?>" title="Roles"><i class="fa fa-lg fa-fw fa-user-secret"></i> <span class="nav-label">Roles</span></a> 
                       </li> 
                       <li class="<?php echo (strtolower($this->router->fetch_class()) =='privilege' ) ? 'active' : ''; ?>">
                       <a href="<?php echo base_url('privilege'); ?>" title="privilege"><i class="fa fa-lg fa-fw fa-wrench"></i> <span class="nav-label">Privilege</span></a> 
-                      </li>
+                      </li> -->
                   <?php endif; ?>  
                 <!-- dynamic data -->
 
@@ -82,6 +88,7 @@
     </nav>
 
         <div id="page-wrapper" class="gray-bg">
+
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
