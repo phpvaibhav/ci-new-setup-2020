@@ -1,4 +1,4 @@
-$("#smart-form-companyinfo").validate({// Rules for form validation
+$("#smart-form-schoolinfo").validate({// Rules for form validation
   errorClass    : errorClass,
   errorElement  : errorElement,
   highlight: function(element) {
@@ -10,10 +10,10 @@ $("#smart-form-companyinfo").validate({// Rules for form validation
     $(element).addClass('valid');
   },
   rules : {
-    companyName : {
+    schoolName : {
       required : true
     },
-    companyEmail : {
+    schoolEmail : {
       required : true,
       email : true
     }
@@ -21,10 +21,10 @@ $("#smart-form-companyinfo").validate({// Rules for form validation
   },
   // Messages for form validation
   messages : {
-        companyName : {
-          required : 'Please enter your company name'
+        schoolName : {
+          required : 'Please enter your school name'
         },
-        companyEmail : {
+        schoolEmail : {
           required : 'Please enter your email address',
           email : 'Please enter a valid email address'
         }
@@ -37,7 +37,7 @@ $("#smart-form-companyinfo").validate({// Rules for form validation
 });
 // Validation
 $(function() {   
-  $(document).on('submit', "#smart-form-companyinfo", function (event) {
+  $(document).on('submit', "#smart-form-schoolinfo", function (event) {
     toastr.clear();
     event.preventDefault();
     var formData = new FormData(this);

@@ -39,7 +39,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="<?php echo $user['fullName']? $user['fullName'] :''; ?>" class="img-circle" src="<?php echo $user['profileImage']? $user['profileImage'] :base_url().'backend_assets/img/avatars/sunny.png'; ?>" />
+                            <img alt="<?php echo $user['fullName']? $user['fullName'] :''; ?>" class="img-circle" height="60" width="60" src="<?php echo $user['profileImage']? $user['profileImage'] :base_url().'backend_assets/img/avatars/sunny.png'; ?>"   />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $user['fullName']? $user['fullName'] :''; ?></strong>
@@ -51,6 +51,11 @@
                                 <?php if(isset($user['roleId']) && $user['roleId']==1): ?>  
                                 <li>
                                 <a href="<?php echo base_url().'company-info/';  ?>"> Company Info </a>
+                                </li>
+                            <?php endif; ?>    
+                            <?php if(isset($user['roleId']) && $user['roleId']==2): ?>  
+                                <li>
+                                <a href="<?php echo base_url().'school-info/';  ?>"> School Info </a>
                                 </li>
                             <?php endif; ?>
                             <li class="divider"></li>

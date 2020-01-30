@@ -98,7 +98,7 @@ class Adminapi_model extends CI_Model {
             fullName,
             email,
             authToken,
-            userType,
+            userType,roleId,
         (case when (profileImage = "") 
         THEN "'.$userDefault.'" ELSE
         concat("'.$userPath.'",profileImage) 

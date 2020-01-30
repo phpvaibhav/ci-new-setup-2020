@@ -60,7 +60,7 @@ class Users extends Common_Admin_Controller{
            
         }
         else{
-        
+           // pr($_FILES);
             $userid             =  $this->post('userauth');
             $userauth           =  decoding($userid);
             $email              =  $this->post('email');
@@ -83,7 +83,7 @@ class Users extends Common_Admin_Controller{
                         if (!empty($_FILES['profileImage']['name'])) {
                         $folder     = 'admin';
                         $image      = $this->Image_model->upload_image('profileImage',$folder); //upload media of Seller
-
+                      
                         //check for error
                         if(array_key_exists("error",$image) && !empty($image['error'])){
                             $response = array('status' => FAIL, 'message' => strip_tags($image['error'].'(In user Image)'));

@@ -71,6 +71,72 @@ class Adminapi extends Common_Admin_Controller{
             $this->response($response);
         }
     } //End Function 
+    // For schoolinfo 
+    function schoolinfo_post(){
+        $this->form_validation->set_rules('schoolName', 'school name', 'trim|required');
+        $this->form_validation->set_rules('schoolEmail', 'school email', 'trim|required|valid_email');
+      
+        if($this->form_validation->run() == FALSE){
+            $response = array('status' => FAIL, 'message' => strip_tags(validation_errors()));
+            $this->response($response);
+        }
+        else{
+        
+            $schoolId                      =  decoding($this->post('schoolId'));
+            $dataExist                      = $this->common_model->is_data_exists('school',array('schoolId'=>$schoolId));
+            $email                          =  $this->post('schoolEmail');
+            $schoolName                    =  $this->post('schoolName');
+
+            //company info
+            $data_val['schoolName']        =   $schoolName;
+            $data_val['schoolEmail']              =   $email;
+        
+
+            //user info
+            // profile pic upload
+            $this->load->model('company_model');
+          
+            $image = array(); $logoImage = '';
+            if (!empty($_FILES['logoImage']['name'])) {
+                $folder     = 'schoolLogo';
+                $image      = $this->company_model->upload_image('logoImage',$folder); //upload media of Seller
+                
+                //check for error
+                if(array_key_exists("error",$image) && !empty($image['error'])){
+                    $response = array('status' => FAIL, 'message' => strip_tags($image['error'].'(In logo Image)'));
+                   $this->response($response);
+                }
+            
+                //check for image name if present
+                if(array_key_exists("image_name",$image)):
+                    $logoImage = $image['image_name'];
+                endif;
+                //check for image name if present
+                if(array_key_exists("image_name",$image)):
+                    $logoImage = $image['image_name'];
+                    if(!empty($dataExist->logo)){
+                        $this->company_model->delete_image('company_assets/logo/',$dataExist->logo);
+                    }
+                   
+                endif;
+
+                 $data_val['schoolLogo']           =   $logoImage;
+            }
+                
+
+            $result = $this->common_model->updateFields('school',$data_val,array('schoolId'=>$schoolId));
+    
+            if($result){
+
+               $response = array('status'=>SUCCESS,'message'=>ResponseMessages::getStatusCodeMessage(123));
+
+             }else{
+                $response = array('status'=>FAIL,'message'=>ResponseMessages::getStatusCodeMessage(118));
+            }   
+            $this->response($response);
+        }
+    } //End Function 
+    
     // For Registration 
     function registration_post(){
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[admin.email]',
@@ -89,6 +155,7 @@ class Adminapi extends Common_Admin_Controller{
         }
         else{
         
+            $userType                          =  $this->post('userType');
             $email                          =  $this->post('email');
             $fullName                       =  $this->post('fullName');
             $authtoken                      = $this->adminapi_model->generate_token();
@@ -97,6 +164,7 @@ class Adminapi extends Common_Admin_Controller{
             $userData['fullName']           =   $fullName;
             $userData['email']              =   $email;
             $userData['userType']           =   1;
+            $userData['roleId']             =   $userType;
             $userData['contactNumber']      =   $this->post('contact');
             $userData['authToken']          =   $authtoken;
             $userData['password']           =   password_hash($this->post('password'), PASSWORD_DEFAULT);
@@ -131,6 +199,12 @@ class Adminapi extends Common_Admin_Controller{
 
                switch ($result['regType']){
                     case "NR": // Normal registration
+                    if($result['returnData']->roleId==2):
+                        $setData['adminId'] = $result['returnData']->id;
+                        $setData['schoolEmail'] = $email;
+                        $setData['schoolName']  = $fullName;
+                        $this->common_model->insertData('school',$setData);
+                    endif;
                     $this->StoreSession($result['returnData']);
                    
                     $response = array('status'=>SUCCESS,'message'=>ResponseMessages::getStatusCodeMessage(110), 'messageCode'=>'normal_reg','users'=>$result['returnData']);

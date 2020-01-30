@@ -57,3 +57,4 @@ $route['dashboard']				= 'admin/dashboard';
 $route['profile/(:any)'] = 'admin/users/userDetail/$1';
 $route['change_password/(:any)'] = 'admin/users/changePassword/$1';
 $route['company-info'] = 'admin/companyInfo';
+$route['school-info'] = 'admin/schoolInfo';

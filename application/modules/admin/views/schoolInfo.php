@@ -4,26 +4,26 @@
     <div class="col-lg-6 col-sm-6 col-md-6">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Company Info</h5>
+                <h5>School Info</h5>
 
             </div>
             <div class="ibox-content">
-                <form class="form-horizontal"method="post" action="companyinfo" id="smart-form-companyinfo" enctype="multipart/form-data" novalidate autocomplete="off">
-                	<input type="hidden" name="companyId" value="<?= encoding($companyinfo['companyId']);?>" >
+                <form class="form-horizontal"method="post" action="schoolinfo" id="smart-form-schoolinfo" enctype="multipart/form-data" novalidate autocomplete="off">
+                	<input type="hidden" name="schoolId" value="<?= encoding($schoolinfo['schoolId']);?>" >
                   <!--   <p>Sign in today for more expirience.</p> -->
                     <div class="form-group">
 
                         <div class="col-lg-12">
-                        	<label class="control-label">Company Name</label>
-                        	<input type="text" name="companyName" placeholder="Company name" id="comapnyName" value="<?= $companyinfo['companyName'];?>" class="form-control" >
+                        	<label class="control-label">School Name</label>
+                        	<input type="text" name="schoolName" placeholder="school name" id="schoolName" value="<?= $schoolinfo['schoolName'];?>" class="form-control" >
                          <!-- <span class="help-block m-b-none">Example block-level help text here.</span> -->
                         </div>
                     </div>
                     <div class="form-group">
 
                         <div class="col-lg-12">
-                        	<label class="control-label">Company Email</label>
-                        	<input type="text"  name="companyEmail" placeholder="Company email" id="companyEmail" value="<?= $companyinfo['email'];?>" class="form-control" >
+                        	<label class="control-label">School Email</label>
+                        	<input type="text"  name="schoolEmail" placeholder="School email" id="schoolEmail" value="<?= $schoolinfo['schoolEmail'];?>" class="form-control" >
                          <!-- <span class="help-block m-b-none">Example block-level help text here.</span> -->
                         </div>
                     </div>
@@ -51,9 +51,9 @@
                         <div class="col-lg-12">
                         	<?php 
 										$logo = base_url().'backend_assets/img/company_logo_default.png';
-										if(!empty($companyinfo['logo'])){
+										if(!empty($schoolinfo['schoolLogo'])){
 											//if(file_exists(base_url().'company_assets/logo/'.$companyinfo['logo'])){
-											$logo = base_url().'company_assets/logo/'.$companyinfo['logo'];
+											$logo = base_url().'company_assets/schoolLogo/'.$schoolinfo['schoolLogo'];
 											//}
 										}
 

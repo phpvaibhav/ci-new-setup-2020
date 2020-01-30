@@ -50,8 +50,23 @@ class Admin extends Common_Back_Controller {
         $data['title']          = '<i class="fa-fw fa fa-cogs"></i> Company';
         $companyinfo            = $this->common_model->getsingle('companyInfo','','','companyId','asc');
         $data['companyinfo']    = $companyinfo;
-        $data['front_scripts']  = array('backend_assets/admin/js/companyInfo.js');
+      //  $data['front_scripts']  = array();
+         $data['front_styles'] = array('backend_assets/css/plugins/jasny/jasny-bootstrap.min.css');
+        $data['front_scripts'] = array('backend_assets/js/plugins/jasny/jasny-bootstrap.min.js','backend_assets/admin/js/companyInfo.js');
         $this->load->admin_render('companyInfo', $data, '');
+    }
+    public function schoolInfo() {
+       
+        $data['parent']         = "School Info";
+        $data['title']          = '<i class="fa-fw fa fa-cogs"></i> School';
+        $user_sess_data         = $_SESSION[ADMIN_USER_SESS_KEY]; 
+        $session_u_id           = $user_sess_data['id'];
+        $schoolinfo            = $this->common_model->getsingle('school',array('adminId'=>$session_u_id),'','schoolId','asc');
+        $data['schoolinfo']    = $schoolinfo;
+      //  $data['front_scripts']  = array();
+         $data['front_styles'] = array('backend_assets/css/plugins/jasny/jasny-bootstrap.min.css');
+        $data['front_scripts'] = array('backend_assets/js/plugins/jasny/jasny-bootstrap.min.js','backend_assets/admin/js/schoolInfo.js');
+        $this->load->admin_render('schoolInfo', $data, '');
     }
     
     //view admin profile

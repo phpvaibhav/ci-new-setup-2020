@@ -15,10 +15,20 @@
                     <input class="form-control" type="email" name="email" placeholder="Email address"  maxlength="100" size="100">
                 </div>
                 <div class="form-group">
+                    <input class="form-control" type="text" name="contact" placeholder="Contact"  maxlength="100" size="100">
+                </div>
+                <div class="form-group">
                     <input type="password" class="form-control"  name="password" placeholder="Password" id="password">
                 </div> 
                 <div class="form-group">
                     <input type="password" name="passwordConfirm" class="form-control" placeholder="Confirm password">
+                </div> 
+                <div class="form-group">
+                   <select name="userType" class="form-control"  >
+                       <option value="0">Select Type</option>
+                       <option value="1">Admin</option>
+                       <option value="2">School</option>
+                   </select>
                 </div>
               <!--   <div class="form-group">
                         <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
