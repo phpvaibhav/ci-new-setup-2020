@@ -2,7 +2,8 @@
  <!-- Mainly scripts -->
     <script src="<?php echo $backend_assets; ?>js/jquery-3.1.1.min.js"></script>
     <script src="<?php echo $backend_assets; ?>js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+   <!-- Toastr -->
+    <script src="<?php echo $backend_assets; ?>js/plugins/toastr/toastr.min.js"></script>
     <!-- iCheck -->
     <script src="<?php echo $backend_assets; ?>js/plugins/iCheck/icheck.min.js"></script>
     <script>
@@ -15,6 +16,7 @@
     </script>
         <!-- JQUERY VALIDATE -->
     <script src="<?php echo $backend_assets; ?>js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="<?php echo $backend_assets; ?>custom/js/common.js"></script>
     <script src="<?php echo $backend_assets; ?>admin/js/login.js"></script>
     <script src="<?php echo $backend_assets; ?>custom/js/custom.js"></script>
   </body>

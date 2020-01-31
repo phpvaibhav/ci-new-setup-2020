@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 30, 2020 at 02:37 PM
+-- Generation Time: Jan 31, 2020 at 01:56 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -49,8 +49,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `roleId`, `fullName`, `email`, `password`, `userType`, `profileImage`, `contactNumber`, `status`, `authToken`, `passToken`, `crd`, `upd`) VALUES
-(3, 1, 'Adminfdf', 'admin@admin.com', '$2y$10$2wXbiJ69itS3pC93Cjc/p..NwsjIzElZ9LmMB53KgD7fZzMd0W.bm', 1, 'B4G08UlcHh3mQNPp.png', '1234565432', 1, '2ece84acd1aedac6e54baac5c69305911106f882', 'bf161bcd2ee7b3ea3af9f691dcf84007bf7e36fb', '2020-01-30 12:32:32', '2020-01-30 12:40:28'),
-(4, 2, 'TESP', 'admin@ts.com', '$2y$10$3WYA6gwYgnd6m11jbRDSe.VGMfsn07chhiiIF5zy1psi6ahN3XY7K', 1, '', '12345665423', 1, 'b1e13d294c2a4d927db8ba959abf1f3d0f59e1f4', '11a71f0b72dc408a5605db19fa61afb0e013624b', '2020-01-30 13:13:05', '2020-01-30 13:13:05');
+(3, 1, 'Admin', 'admin@admin.com', '$2y$10$2wXbiJ69itS3pC93Cjc/p..NwsjIzElZ9LmMB53KgD7fZzMd0W.bm', 1, 'B4G08UlcHh3mQNPp.png', '1234565432', 1, 'b53920a3e974407b756291c669d1970194d3af06', 'bf161bcd2ee7b3ea3af9f691dcf84007bf7e36fb', '2020-01-30 12:32:32', '2020-01-31 12:39:29'),
+(4, 2, 'TESP', 'admin@ts.com', '$2y$10$3WYA6gwYgnd6m11jbRDSe.VGMfsn07chhiiIF5zy1psi6ahN3XY7K', 1, '', '12345665423', 1, 'a68cc464261f2121c106ec5554c20f97ff427dcd', '11a71f0b72dc408a5605db19fa61afb0e013624b', '2020-01-30 13:13:05', '2020-01-31 11:46:03');
 
 -- --------------------------------------------------------
 
@@ -111,6 +111,14 @@ CREATE TABLE `menu` (
   `showStatus` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:Yes ,0:No'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`menuId`, `title`, `link`, `icon`, `parentId`, `showStatus`) VALUES
+(1, 'Dashboard', 'dashboard', ' fa fa-home', 0, 1),
+(2, 'School', 'school', 'fa fa-graduation-cap', 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -128,6 +136,15 @@ CREATE TABLE `privilege` (
   `crd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `upd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `privilege`
+--
+
+INSERT INTO `privilege` (`privilegeId`, `menuId`, `roleId`, `viewData`, `addData`, `editData`, `deleteData`, `crd`, `upd`) VALUES
+(1, 1, 1, 1, 1, 1, 1, '2020-01-31 10:40:39', '2020-01-31 10:40:39'),
+(2, 2, 1, 1, 1, 1, 1, '2020-01-31 10:40:39', '2020-01-31 10:40:39'),
+(3, 1, 2, 1, 1, 1, 1, '2020-01-31 10:41:25', '2020-01-31 10:41:25');
 
 -- --------------------------------------------------------
 
@@ -253,13 +270,13 @@ ALTER TABLE `companyInfo`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menuId` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `menuId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `privilege`
 --
 ALTER TABLE `privilege`
-  MODIFY `privilegeId` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `privilegeId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `school`

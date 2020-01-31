@@ -64,11 +64,11 @@ $("#login-form").validate({
           data: $(form).serialize(),
           cache: false,
           beforeSend: function() {
-           
+            preLoadshow(true);
             $('#submit').prop('disabled', true);  
           },     
           success: function (res) {
-           
+            preLoadshow(false);
             setTimeout(function(){  $('#submit').prop('disabled', false); },4000);
             if(res.status=='success'){
               toastr.success(res.message, 'Success', {timeOut: 3000});
@@ -110,11 +110,11 @@ $("#forgot-form").validate({
         data: $(form).serialize(),
         cache: false,
         beforeSend: function() {
-         
+          preLoadshow(true);
           $('#submit').prop('disabled', true);  
         },     
         success: function (res) {
-        
+           preLoadshow(false);
           setTimeout(function(){  $('#submit').prop('disabled', false); },4000);
           if(res.status=='success'){
             toastr.success(res.message, 'Success', {timeOut: 3000});
@@ -186,11 +186,11 @@ $("#smart-form-register").validate({// Rules for form validation
         data: $(form).serialize(),
         cache: false,
         beforeSend: function() {
-         // preLoadshow(true);
+         preLoadshow(true);
           $('#submit').prop('disabled', true);  
         },     
         success: function (res) {
-         
+          preLoadshow(false);
           setTimeout(function(){  $('#submit').prop('disabled', false); },4000);
           if(res.status=='success'){
             toastr.success(res.message, 'Success', {timeOut: 3000});
@@ -251,11 +251,11 @@ $("#smart-form-register").validate({// Rules for form validation
                  dataType:'json',
                   cache: false,
            beforeSend: function() {
-                     //preLoadshow(true);
+                     preLoadshow(true);
                     $('#submit').prop('disabled', true);  
                   },     
                  success: function (res) {
-                   //preLoadshow(false);
+                   preLoadshow(false);
                     setTimeout(function(){  $('#submit').prop('disabled', false); },4000);
                   if(res.status=='success'){
                    toastr.success(res.message, 'Success', {timeOut: 3000});

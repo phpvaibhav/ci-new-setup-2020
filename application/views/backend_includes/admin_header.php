@@ -12,10 +12,11 @@
     <link href="<?php echo $backend_assets; ?>font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <link href="<?php echo $backend_assets; ?>css/animate.css" rel="stylesheet">
+    <!-- Toastr style -->
+    <link href="<?php echo $backend_assets; ?>css/plugins/toastr/toastr.min.css" rel="stylesheet">
     <link href="<?php echo $backend_assets; ?>css/style.css" rel="stylesheet">
-      <!-- sweetalert -->
+    <!-- sweetalert -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <?php if(!empty($front_styles)) { load_css($front_styles); } //load required page styles 
      ?>
     <!-- custom -->
@@ -42,8 +43,8 @@
                             <img alt="<?php echo $user['fullName']? $user['fullName'] :''; ?>" class="img-circle" height="60" width="60" src="<?php echo $user['profileImage']? $user['profileImage'] :base_url().'backend_assets/img/avatars/sunny.png'; ?>"   />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $user['fullName']? $user['fullName'] :''; ?></strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $user['fullName']? ucfirst($user['fullName']) :''; ?></strong>
+                             </span> <span class="text-muted text-xs block"><?php echo $user['userType']? ucfirst($user['userType']) :''; ?><b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="<?php echo base_url().'profile/'.encoding($user['userId']);  ?>">Profile</a></li>
                             <li><a href="<?php echo base_url().'change_password/'.encoding($user['userId']);  ?>">Change Password</a></li>
@@ -67,7 +68,7 @@
                         </ul>
                     </div>
                     <div class="logo-element">
-                        IN+
+                        <?php echo (isset(company_detail()['companyName']) ? company_detail()['companyName']:SITE_NAME) ?>
                     </div>
                 </li>
                 <!-- dynamic data -->

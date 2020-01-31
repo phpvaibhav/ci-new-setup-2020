@@ -14,3 +14,9 @@ preLoadshow(true);
 $( document ).ready(function() {
    preLoadshow(false);
 });
+toastr.options = {
+	closeButton: true,
+	progressBar: true,
+	showMethod: 'slideDown',
+	timeOut: 3000
+};

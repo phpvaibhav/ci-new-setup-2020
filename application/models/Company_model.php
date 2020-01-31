@@ -1,6 +1,5 @@
 <?php
-class Company_model extends CI_Model{
-    
+class Company_model extends CI_Model{ 
     public function __construct(){
         parent::__construct();
         $this->load->helper('string');
@@ -100,16 +99,53 @@ class Company_model extends CI_Model{
         return TRUE;
     }//end function
     function companyInfo(){
-		$companyinfo             = $this->common_model->getsingle('companyInfo','','','companyId','asc');
-		$logo = base_url().'backend_assets/img/company_logo_default.png';
+        $array = array();
+        /*company info*/
+        $companyinfo             = $this->common_model->getsingle('companyInfo','','','companyId','asc');
+        $logo = base_url().'backend_assets/img/company_logo_default.png';
         $companyinfo['logoName'] =  $companyinfo['logo'];
-		if(!empty($companyinfo['logo'])){
-		//if(file_exists(base_url().'company_assets/logo/'.$companyinfo['logo'])){
-		$logo = base_url().'company_assets/logo/'.$companyinfo['logo'];
-		//}
-		}
-		$companyinfo['logo'] = $logo;
-		return $companyinfo;
+        if(!empty($companyinfo['logo'])){
+        //if(file_exists(base_url().'company_assets/logo/'.$companyinfo['logo'])){
+        $logo = base_url().'company_assets/logo/'.$companyinfo['logo'];
+        //}
+        }
+        $companyinfo['logo'] = $logo;
+        $user_sess_data         = isset($_SESSION[ADMIN_USER_SESS_KEY]) ?$_SESSION[ADMIN_USER_SESS_KEY]:false;
+        if($user_sess_data){
+            $session_u_id           = $user_sess_data['id'];
+            $admin = $this->common_model->adminInfo(array('id'=>$session_u_id));
+            /****School info****/
+            $schoolinfo             = $this->common_model->getsingle('school',array('adminId'=>$session_u_id),'','schoolId','asc');
+                if($schoolinfo){
+                    $schoolArray['companyName'] = $schoolinfo['schoolName'];
+                    $schoolArray['email'] = $schoolinfo['schoolEmail'];
+                    $logoA = base_url().'backend_assets/img/company_logo_default.png';
+                    $schoolArray['logoName'] =  $schoolinfo['schoolLogo'];
+                    if(!empty($schoolinfo['schoolLogo'])){
+                    //if(file_exists(base_url().'company_assets/logo/'.$companyinfo['logo'])){
+                    $logoA = base_url().'company_assets/schoolLogo/'.$schoolinfo['schoolLogo'];
+                    //}
+                    }
+                    $schoolArray['logo'] = $logoA;
+                }
+
+            /****School info****/
+            switch ($admin['roleId']) {
+                case 1:
+                   $array = $companyinfo ;
+                    break;
+                case 2:
+                    $array = $schoolArray ;
+                    break;
+                
+                default:
+                    $array = $companyinfo ;
+                    break;
+            }
+        }else{
+            $array =$companyinfo;
+        }
+		return $array;
     }//end function
 
 }// End of class Image_model

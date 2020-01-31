@@ -353,12 +353,12 @@ class Common_model extends CI_Model {
         $adminId = $where['id'];
         $isAdmin = $this->common_model->is_data_exists('admin',array('id'=>$adminId));
         $roleId = $isAdmin ? $isAdmin->roleId:0;
-        $setData = ($isAdmin->roleId !=1)? ",p.privilegeId,p.roleId,p.roleId,p.viewData,p.addData,p.editData,p.deleteData" :"";
+        $setData = ",p.privilegeId,p.roleId,p.roleId,p.viewData,p.addData,p.editData,p.deleteData";
         $array =    array();
         $this->db->select("m.*".$setData);
         $this->db->from('menu as m');
-        ($isAdmin->roleId !=1) ?$this->db->join('privilege as p','p.menuId=m.menuId') :'';
-        ($isAdmin->roleId !=1) ? $this->db->where(array('p.roleId'=>$roleId)) :"";
+        $this->db->join('privilege as p','p.menuId=m.menuId');
+        $this->db->where(array('p.roleId'=>$roleId));
         $sql        = $this->db->get();
         if($sql->num_rows()){
             $array  = $sql->result();
