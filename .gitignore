@@ -11,7 +11,7 @@ application/logs/*
 # Ignore htaccess as we will have different environment for local, dev and prod
 # This file needs to be added manually in project
 .htaccess
-
+phpMyAdmin
 # Ignore everything in composer's vendor directory                
 application/vendor/*
 
