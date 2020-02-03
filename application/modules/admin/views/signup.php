@@ -2,7 +2,7 @@
         <div>
             <div>
 
-                <h1 class="logo-name"><?php echo (isset(company_detail()['companyName']) ? company_detail()['companyName']:SITE_NAME); ?></h1>
+                <h1 class="logo-name"><img src="<?php echo $companyInfo['logo']; ?>" alt="<?= $companyInfo['companyName'];?>"></h1>
 
             </div>
             <h3>Register to <?php echo (isset(company_detail()['companyName']) ? company_detail()['companyName']:SITE_NAME); ?></h3>

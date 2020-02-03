@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 03, 2020 at 04:47 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Host: localhost
+-- Generation Time: Feb 03, 2020 at 10:34 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,15 +36,15 @@ CREATE TABLE `admin` (
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` text NOT NULL,
-  `userType` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1:Admin',
+  `userType` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1:Admin',
   `profileImage` varchar(255) NOT NULL,
   `contactNumber` varchar(255) NOT NULL,
   `bio` text NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1:Active',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:Active',
   `authToken` text NOT NULL,
   `passToken` text NOT NULL,
-  `crd` timestamp NOT NULL DEFAULT current_timestamp(),
-  `upd` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `crd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `upd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -52,51 +52,51 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `roleId`, `fullName`, `firstName`, `lastName`, `email`, `password`, `userType`, `profileImage`, `contactNumber`, `bio`, `status`, `authToken`, `passToken`, `crd`, `upd`) VALUES
-(3, 1, 'Admin', '', '', 'admin@admin.com', '$2y$10$2wXbiJ69itS3pC93Cjc/p..NwsjIzElZ9LmMB53KgD7fZzMd0W.bm', 1, '5fQJDPUzeKv7CTiR.jpg', '1234565432', '', 1, 'bc85910b3b0e0c11b0580a3fc1a127e9a9d3d9e9', 'bf161bcd2ee7b3ea3af9f691dcf84007bf7e36fb', '2020-01-30 12:32:32', '2020-02-02 04:57:23'),
+(3, 1, 'Admin', '', '', 'admin@admin.com', '$2y$10$2wXbiJ69itS3pC93Cjc/p..NwsjIzElZ9LmMB53KgD7fZzMd0W.bm', 1, '5fQJDPUzeKv7CTiR.jpg', '1234565432', '', 1, '0063e0f8a59f471ef6ec052a218cf7c413d27ecb', 'bf161bcd2ee7b3ea3af9f691dcf84007bf7e36fb', '2020-01-30 12:32:32', '2020-02-03 08:03:59'),
 (4, 2, 'TESP', '', '', 'admin@ts.com', '$2y$10$3WYA6gwYgnd6m11jbRDSe.VGMfsn07chhiiIF5zy1psi6ahN3XY7K', 1, '', '12345665423', '', 1, 'a68cc464261f2121c106ec5554c20f97ff427dcd', '11a71f0b72dc408a5605db19fa61afb0e013624b', '2020-01-30 13:13:05', '2020-01-31 11:46:03');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adminrole`
+-- Table structure for table `adminRole`
 --
 
-CREATE TABLE `adminrole` (
+CREATE TABLE `adminRole` (
   `roleId` bigint(20) NOT NULL,
   `userType` varchar(255) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1:Active',
-  `crd` timestamp NOT NULL DEFAULT current_timestamp(),
-  `upd` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:Active',
+  `crd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `upd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `adminrole`
+-- Dumping data for table `adminRole`
 --
 
-INSERT INTO `adminrole` (`roleId`, `userType`, `status`, `crd`, `upd`) VALUES
+INSERT INTO `adminRole` (`roleId`, `userType`, `status`, `crd`, `upd`) VALUES
 (1, 'Administrator', 1, '2020-01-30 12:29:44', '2020-01-30 12:29:44'),
 (2, 'Super Admin', 1, '2020-01-30 12:29:44', '2020-01-30 12:29:44');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `companyinfo`
+-- Table structure for table `companyInfo`
 --
 
-CREATE TABLE `companyinfo` (
+CREATE TABLE `companyInfo` (
   `companyId` bigint(20) NOT NULL,
   `companyName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `logo` text NOT NULL,
-  `crd` timestamp NOT NULL DEFAULT current_timestamp(),
-  `upd` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `crd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `upd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `companyinfo`
+-- Dumping data for table `companyInfo`
 --
 
-INSERT INTO `companyinfo` (`companyId`, `companyName`, `email`, `logo`, `crd`, `upd`) VALUES
+INSERT INTO `companyInfo` (`companyId`, `companyName`, `email`, `logo`, `crd`, `upd`) VALUES
 (1, 'Tunecademy', 'tunecademy@info.com', 'gs6iHh2zDZItpqE9.png', '2020-01-30 12:33:46', '2020-02-01 06:43:57');
 
 -- --------------------------------------------------------
@@ -111,7 +111,7 @@ CREATE TABLE `menu` (
   `link` text NOT NULL,
   `icon` varchar(100) NOT NULL,
   `parentId` bigint(20) NOT NULL,
-  `showStatus` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1:Yes ,0:No'
+  `showStatus` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:Yes ,0:No'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -132,12 +132,12 @@ CREATE TABLE `privilege` (
   `privilegeId` bigint(20) NOT NULL,
   `menuId` bigint(20) NOT NULL,
   `roleId` bigint(20) NOT NULL,
-  `viewData` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1:Yes',
-  `addData` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1:Yes',
-  `editData` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1:Yes',
-  `deleteData` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1:Yes',
-  `crd` timestamp NOT NULL DEFAULT current_timestamp(),
-  `upd` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `viewData` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1:Yes',
+  `addData` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1:Yes',
+  `editData` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1:Yes',
+  `deleteData` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1:Yes',
+  `crd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `upd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -161,9 +161,9 @@ CREATE TABLE `school` (
   `schoolName` varchar(191) NOT NULL,
   `schoolLogo` varchar(255) NOT NULL,
   `schoolEmail` varchar(255) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1:Active',
-  `crd` timestamp NOT NULL DEFAULT current_timestamp(),
-  `upd` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:Active',
+  `crd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `upd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -176,25 +176,25 @@ INSERT INTO `school` (`schoolId`, `adminId`, `schoolName`, `schoolLogo`, `school
 -- --------------------------------------------------------
 
 --
--- Table structure for table `schoolmember`
+-- Table structure for table `schoolMember`
 --
 
-CREATE TABLE `schoolmember` (
+CREATE TABLE `schoolMember` (
   `schoolMemberId` bigint(20) NOT NULL,
   `schoolId` bigint(20) NOT NULL,
-  `staffType` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1:teacher',
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1:active',
-  `crd` timestamp NOT NULL DEFAULT current_timestamp(),
-  `upd` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `staffType` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:teacher',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:active',
+  `crd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `upd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staffmeta`
+-- Table structure for table `staffMeta`
 --
 
-CREATE TABLE `staffmeta` (
+CREATE TABLE `staffMeta` (
   `staffMetaId` bigint(20) NOT NULL,
   `staffId` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -202,10 +202,10 @@ CREATE TABLE `staffmeta` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `studentmeta`
+-- Table structure for table `studentMeta`
 --
 
-CREATE TABLE `studentmeta` (
+CREATE TABLE `studentMeta` (
   `studentMetaId` bigint(20) NOT NULL,
   `studentId` bigint(20) NOT NULL,
   `class` varchar(255) NOT NULL
@@ -214,10 +214,10 @@ CREATE TABLE `studentmeta` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teachermeta`
+-- Table structure for table `teacherMeta`
 --
 
-CREATE TABLE `teachermeta` (
+CREATE TABLE `teacherMeta` (
   `teacherMetaId` bigint(20) NOT NULL,
   `teacherId` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -235,15 +235,15 @@ CREATE TABLE `users` (
   `password` text NOT NULL,
   `profileImage` text NOT NULL,
   `contactNumber` varchar(255) NOT NULL,
-  `userType` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1:Customer,2:Driver',
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1:Active ,0:Inactive',
+  `userType` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1:Customer,2:Driver',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1:Active ,0:Inactive',
   `authToken` text NOT NULL,
   `passToken` text NOT NULL,
-  `deviceType` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0:Web,1:Android,2:IOS',
+  `deviceType` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0:Web,1:Android,2:IOS',
   `deviceToken` text NOT NULL,
-  `verifyEmail` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1:Verify',
-  `crd` timestamp NOT NULL DEFAULT current_timestamp(),
-  `upd` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `verifyEmail` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1:Verify',
+  `crd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `upd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -258,15 +258,15 @@ ALTER TABLE `admin`
   ADD KEY `roleId` (`roleId`);
 
 --
--- Indexes for table `adminrole`
+-- Indexes for table `adminRole`
 --
-ALTER TABLE `adminrole`
+ALTER TABLE `adminRole`
   ADD PRIMARY KEY (`roleId`);
 
 --
--- Indexes for table `companyinfo`
+-- Indexes for table `companyInfo`
 --
-ALTER TABLE `companyinfo`
+ALTER TABLE `companyInfo`
   ADD PRIMARY KEY (`companyId`);
 
 --
@@ -307,15 +307,15 @@ ALTER TABLE `admin`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `adminrole`
+-- AUTO_INCREMENT for table `adminRole`
 --
-ALTER TABLE `adminrole`
+ALTER TABLE `adminRole`
   MODIFY `roleId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `companyinfo`
+-- AUTO_INCREMENT for table `companyInfo`
 --
-ALTER TABLE `companyinfo`
+ALTER TABLE `companyInfo`
   MODIFY `companyId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -350,13 +350,13 @@ ALTER TABLE `users`
 -- Constraints for table `admin`
 --
 ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `adminrole` (`roleId`) ON DELETE CASCADE;
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `adminRole` (`roleId`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `privilege`
 --
 ALTER TABLE `privilege`
-  ADD CONSTRAINT `privilege_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `adminrole` (`roleId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `privilege_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `adminRole` (`roleId`) ON DELETE CASCADE,
   ADD CONSTRAINT `privilege_ibfk_2` FOREIGN KEY (`menuId`) REFERENCES `menu` (`menuId`) ON DELETE CASCADE;
 COMMIT;
 

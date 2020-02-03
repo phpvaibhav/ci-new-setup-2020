@@ -8,6 +8,12 @@
 
     <title><?php echo (isset(company_detail()['companyName']) ? company_detail()['companyName']:SITE_NAME).' | Admin' ?></title>
     <?php $backend_assets =  base_url().'backend_assets/';?>
+     <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $backend_assets; ?>img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $backend_assets; ?>img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $backend_assets; ?>img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="<?php echo $backend_assets; ?>img/favicon/site.webmanifest">
+    <!-- Favicon -->
     <link href="<?php echo $backend_assets; ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo $backend_assets; ?>font-awesome/css/font-awesome.css" rel="stylesheet">
 
@@ -40,7 +46,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="<?php echo $user['fullName']? $user['fullName'] :''; ?>" class="img-circle" height="60" width="60" src="<?php echo $user['profileImage']? $user['profileImage'] :base_url().'backend_assets/img/avatars/sunny.png'; ?>"   />
+                            <img alt="<?php echo $user['fullName']? $user['fullName'] :''; ?>" class="img-circle" height="48" width="48" src="<?php echo $user['profileImage']? $user['profileImage'] :base_url().'backend_assets/img/avatars/sunny.png'; ?>"   />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $user['fullName']? ucfirst($user['fullName']) :''; ?></strong>
@@ -85,6 +91,10 @@
                       <li class="<?php echo (strtolower($this->router->fetch_class()) =='privilege' ) ? 'active' : ''; ?>">
                       <a href="<?php echo base_url('privilege'); ?>" title="privilege"><i class="fa fa-lg fa-fw fa-wrench"></i> <span class="nav-label">Privilege</span></a> 
                       </li> -->
+                 <?php elseif(isset($user['roleId']) && $user['roleId']==2): ?> 
+                     <li class="<?php echo (strtolower($this->router->fetch_class()) =='teachers' ) ? 'active' : ''; ?>">
+                      <a href="<?php echo base_url('teachers'); ?>" title="teachers"><i class="fa fa-user-secret"></i> <span class="nav-label">Teachers</span></a> 
+                      </li> 
                   <?php endif; ?>  
                 <!-- dynamic data -->
 
@@ -215,22 +225,32 @@
 
         </nav>
     </div>
-       <!--      <div class="row wrapper border-bottom white-bg page-heading">
+    <?php if(isset($breadcrumb) && !empty($breadcrumb)): ?>
+    <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-4">
-                    <h2>This is main title</h2>
+                    <h2><?= $title; ?></h2>
                     <ol class="breadcrumb">
+                         <?php
+                           foreach ($breadcrumb as $key=>$value) {
+                            if($value!=''){
+                           ?>
                         <li>
-                            <a href="index.html">This is</a>
+                            <a href="<?=$value; ?>"><?=$key; ?></a>
                         </li>
+                        <?php }else{ ?>
                         <li class="active">
-                            <strong>Breadcrumb</strong>
+                            <strong><?=$key; ?></strong>
                         </li>
+                         <?php }
+                           }
+                           ?>     
                     </ol>
                 </div>
                 <div class="col-sm-8">
                     <div class="title-action">
-                        <a href="" class="btn btn-primary">This is action area</a>
+                       <!--  <a href="" class="btn btn-primary">This is action area</a> -->
                     </div>
                 </div>
-            </div> -->
+            </div>
+    <?php endif ?>
             <div class="wrapper wrapper-content animated fadeInRight">

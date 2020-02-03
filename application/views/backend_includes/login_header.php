@@ -9,6 +9,12 @@
     <?php
         $backend_assets =  base_url().'backend_assets/';
     ?>
+    <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $backend_assets; ?>img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $backend_assets; ?>img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $backend_assets; ?>img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="<?php echo $backend_assets; ?>img/favicon/site.webmanifest">
+    <!-- Favicon -->
     <link href="<?php echo $backend_assets; ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo $backend_assets; ?>font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo $backend_assets; ?>css/plugins/iCheck/custom.css" rel="stylesheet">
