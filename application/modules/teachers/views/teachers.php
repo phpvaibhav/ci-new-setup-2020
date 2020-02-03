@@ -454,13 +454,45 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">Modal title</h4>
             </div>
+            <!-- form -->
+            <form class="form-horizontal"method="post" action="companyinfo" id="smart-form-companyinfo" enctype="multipart/form-data" novalidate autocomplete="off">
             <div class="modal-body">
-            	
+            	<!-- form set -->
+        		<div class="form-group">
+            		<div class="col-md-6">
+							<label class="control-label">Frist Name</label>
+							<input type="text" name="fristName" placeholder="Frist Name" id="fristName" value="" class="form-control" >
+            		</div>
+            		<div class="col-md-6">
+							<label class="control-label">Last Name</label>
+							<input type="text" name="lastName" placeholder="Last Name" id="lastName" value="" class="form-control" >
+            		</div>
+        		</div>	
+				<div class="form-group">
+            		<div class="col-md-12">
+							<label class="control-label">Email</label>
+							<input type="email" name="email" placeholder="Email" id="email" value="" class="form-control" >
+            		</div>
+            		
+        		</div>	
+				<div class="form-group">
+            		<div class="col-md-6">
+						<label class="control-label">Password</label>
+						<input type="password" name="password" placeholder="Password" id="password" value="" class="form-control" >
+            		</div>
+            		<div class="col-md-6">
+						<label class="control-label">Confirm Password</label>
+						<input type="password" name="c_password" placeholder="Confirm Password" id="c_password" value="" class="form-control" >
+            		</div>
+        		</div>	
+            	<!-- form set -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="sumbit" class="btn btn-primary">Save</button>
             </div>
+            </form>
+            <!-- form -->
         </div>
     </div>
 </div>
