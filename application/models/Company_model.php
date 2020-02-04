@@ -48,8 +48,8 @@ class Company_model extends CI_Model{
                 'upload_path'       => $realpath.$folder,
                 'allowed_types'     => $allowed_types,
                 'max_size'          => "10240",   // File size limitation, initially w'll set to 10mb (Can be changed)
-                'max_height'        => "56", // max height in px
-                'max_width'         => "250", // max width in px
+               // 'max_height'        => "1", // max height in px
+               // 'max_width'         => "250", // max width in px
                 'min_width'         => "200", // min width in px
                	'min_height'        => "50", // min height in px
                 'file_name'         => $img_name,

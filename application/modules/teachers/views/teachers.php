@@ -452,10 +452,10 @@
     <div class="modal-content animated bounceInRight">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title">Teacher</h4>
             </div>
             <!-- form -->
-            <form class="form-horizontal"method="post" action="companyinfo" id="smart-form-companyinfo" enctype="multipart/form-data" novalidate autocomplete="off">
+            <form class="form-horizontal"method="post" action="teacher/addTeacher" id="form-teacher" enctype="multipart/form-data" novalidate autocomplete="off">
             <div class="modal-body">
             	<!-- form set -->
         		<div class="form-group">
@@ -469,9 +469,13 @@
             		</div>
         		</div>	
 				<div class="form-group">
-            		<div class="col-md-12">
+            		<div class="col-md-6">
 							<label class="control-label">Email</label>
 							<input type="email" name="email" placeholder="Email" id="email" value="" class="form-control" >
+            		</div>
+            		<div class="col-md-6">
+							<label class="control-label">Contact</label>
+							<input type="text" name="contact" placeholder="Contact number" id="contact" value="" class="form-control" >
             		</div>
             		
         		</div>	
